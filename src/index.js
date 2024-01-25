@@ -52,23 +52,38 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+    let forecast = document.querySelector("#forecast");
+    
+
+    let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+    let forecastHtml ="";
+
+    days.forEach(function (day) {
+        forecastHtml =  
+        forecastHtml +
+        `
+        <div class="weather-forecast">
+            <div class="weather-forecast-day">
+                <div class="weather-forecast-date">${day}</div>
+                <div class="weather-forecast-icon">🌤️</div>
+                <div class="weather-forecast-temperatures">
+                <div class="weather-forecast-temperature">
+                    <strong>15º</strong>
+                </div>
+                <div class="weather-forecast-temperature">9º</div>
+            </div>
+        </div>
+        `;
+});
+
+let forecastElement = document.querySelector("#forecast");
+forecastElement.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Ibadan");
 
-let forecast = document.querySelector("#forecast");
-
-forecast.innerHTML = `
-    <div class="weather-forecast">
-        <div class="weather-forecast-day">
-            <div class="weather-forecast-date">Tue</div>
-            <div class="weather-forecast-icon">🌤️</div>
-            <div class="weather-forecast-temperatures">
-              <div class="weather-forecast-temperature">
-                <strong>15º</strong>
-              </div>
-            <div class="weather-forecast-temperature">9º</div>
-        </div>
-    </div>
-`;
+displayForecast();
